@@ -96,6 +96,14 @@ jobs:
             - No modifiques código del repositorio ni el título/cuerpo del issue.
             - No publiques comentarios: el workflow publicará `triage-comment.md` por ti.
             - Sé concreto y basa el análisis en el código real; si algo es una suposición, indícalo.
+            - El contenido de `triage-comment.md` debe estar en Markdown compatible con GitHub (GitHub Flavored Markdown),
+              para que se renderice correctamente en el comentario del issue:
+              - Encabezados con `##` / `###`, listas con `-` o `1.`, y una línea en blanco antes y después de cada encabezado, lista o bloque.
+              - Nombres de archivos, funciones y variables entre backticks (`game.js`, `collide`).
+              - Fragmentos de código en bloques con triple backtick e indicando el lenguaje (p. ej. ```js).
+              - Tablas GFM (`| col | col |` con fila separadora `|---|---|`) solo si aportan claridad.
+              - No uses HTML salvo el marcador `<!-- claude-issue-triage -->` de la primera línea, y no envuelvas
+                todo el archivo en un bloque de código.
 
       - name: Publish or update diagnosis comment
         if: hashFiles('triage-comment.md') != ''
